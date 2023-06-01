@@ -8,6 +8,6 @@ All models found here are from open-source projects, and we would like to thank 
 
 Usecase: Find faces and compare them with saved face data.
 
-Models: detect-class1 (TFLite Object Detection) and MobileFaceNet V2
+Models: detect-class1 (TFLite Object Detection) and keras-VGGFace resnet50 based for face verification.
 
 Javadoc: https://LMODroid.github.io/platform_external_yifan/FaceShared/
