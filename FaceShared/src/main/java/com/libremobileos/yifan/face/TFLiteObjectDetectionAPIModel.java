@@ -50,7 +50,7 @@ import com.libremobileos.yifan.util.GpuDelegateFactory;
 /* package-private */ class TFLiteObjectDetectionAPIModel
         extends SimilarityClassifier {
 
-  private static final int OUTPUT_SIZE = 512;
+  private static final int OUTPUT_SIZE = 2048;
   //private static final int OUTPUT_SIZE = 192;
 
   // Only return this many results.
