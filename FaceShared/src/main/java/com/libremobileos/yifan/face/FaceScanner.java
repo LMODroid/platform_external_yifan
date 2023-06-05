@@ -378,7 +378,7 @@ public class FaceScanner {
 		}
 
 		private static float[] normalizeFloat(float[] emb) {
-			float [] norm_out = new float[512];
+			float [] norm_out = new float[emb.length];
 			double norm  = Math.sqrt(sumSquares(emb));
 			for (int i=0;i< emb.length;i++){
 				norm_out[i] = (float)(emb[i]/norm);
