@@ -46,7 +46,7 @@ public class FaceScanner {
 	private final boolean hwAcceleration, enhancedHwAcceleration;
 	private final int numThreads;
 	// MobileFaceNet model parameters
-	private static final int TF_OD_API_INPUT_SIZE = 224;
+	private static final int TF_OD_API_INPUT_SIZE = 112;
 	private static final boolean TF_OD_API_IS_QUANTIZED = false;
 	private static final String TF_OD_API_MODEL_FILE = "mobile_face_net.tflite";
 	private static final String TF_OD_API_LABELS_FILE = "mobile_face_net.txt";
