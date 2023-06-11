@@ -57,8 +57,11 @@ import com.libremobileos.yifan.util.GpuDelegateFactory;
   private static final int NUM_DETECTIONS = 10;
 
   // Float model
-  private static final float IMAGE_MEAN = 127.5f;
-  private static final float IMAGE_STD = 127.5f;
+  private static final float FirstChannelMean = 131.0912f;
+  private static final float SecondChannelMean = 103.8827f;
+  private static final float ThirdChannelMean = 91.4953f;
+
+
   private static final String SYSTEM_MODEL_DIR = "/system/etc/face";
 
   private boolean isModelQuantized;
@@ -214,9 +217,9 @@ import com.libremobileos.yifan.util.GpuDelegateFactory;
           imgData.put((byte) ((pixelValue >> 8) & 0xFF));
           imgData.put((byte) (pixelValue & 0xFF));
         } else { // Float model
-          imgData.putFloat((((pixelValue >> 16) & 0xFF) - IMAGE_MEAN) / IMAGE_STD);
-          imgData.putFloat((((pixelValue >> 8) & 0xFF) - IMAGE_MEAN) / IMAGE_STD);
-          imgData.putFloat(((pixelValue & 0xFF) - IMAGE_MEAN) / IMAGE_STD);
+          imgData.putFloat(((pixelValue >> 16) & 0xFF) - ThirdChannelMean);
+          imgData.putFloat(((pixelValue >> 8) & 0xFF) - SecondChannelMean);
+          imgData.putFloat((pixelValue & 0xFF) - FirstChannelMean);
         }
       }
     }
