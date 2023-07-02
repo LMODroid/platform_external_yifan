@@ -21,7 +21,7 @@ android {
 		targetCompatibility JavaVersion.VERSION_11
 	}
 
-	flavorDimensions "gpu"
+	flavorDimensions = ["gpu"]
 	productFlavors {
 		withGpu {
 			dependencies {

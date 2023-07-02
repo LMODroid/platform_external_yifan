@@ -3,8 +3,8 @@ plugins {
 }
 
 // https://stackoverflow.com/a/29164335, https://stackoverflow.com/a/52286740, https://stackoverflow.com/a/71848953, https://stackoverflow.com/a/63547141
-android.libraryVariants.all { variant ->
-	project.tasks.create("generate${variant.name.capitalize()}Javadoc", Javadoc) {
+android.libraryVariants.configureEach { variant ->
+	project.tasks.register("generate${variant.name.capitalize()}Javadoc", Javadoc) {
 		description "Generates Javadoc for $variant.name."
 		source = variant.sourceSets.collect { it.java.sourceFiles }.inject { m, i -> m + i }
 		doFirst {
@@ -18,6 +18,10 @@ android.libraryVariants.all { variant ->
 		ext.androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
 		options.links("https://d.android.com/reference/")
 		options.linksOffline('https://d.android.com/reference/', 'https://d.android.com/reference/androidx/')
+		// Make sure to assemble project first - dependencies on other project()s may not be built,
+		// resulting in non-existing jar which gets silently skipped by javadoc and it then errors
+		// out due to missing classes.
+		dependsOn("assemble${variant.name.capitalize()}")
 	}
 }
 
@@ -40,7 +44,7 @@ android {
 		targetCompatibility JavaVersion.VERSION_11
 	}
 
-	flavorDimensions "gpu"
+	flavorDimensions = ["gpu"]
 	productFlavors {
 		withGpu {}
 		withoutGpu {}
