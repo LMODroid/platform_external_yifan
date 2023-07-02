@@ -20,50 +20,53 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-/** In-memory FaceStorageBackend, bypassing encoding and storage, relying on cache entirely for performance */
+/**
+ * In-memory FaceStorageBackend, bypassing encoding and storage, relying on cache entirely for
+ * performance
+ */
 @SuppressWarnings("unused")
 public class VolatileFaceStorageBackend extends FaceStorageBackend {
 
-	public VolatileFaceStorageBackend() {
-		super();
-		cachedNames = new HashSet<>();
-		cachedData = new HashMap<>();
-	}
+    public VolatileFaceStorageBackend() {
+        super();
+        cachedNames = new HashSet<>();
+        cachedData = new HashMap<>();
+    }
 
-	@Override
-	protected Set<String> getNamesInternal() {
-		throw new RuntimeException("Stub!");
-	}
+    @Override
+    protected Set<String> getNamesInternal() {
+        throw new RuntimeException("Stub!");
+    }
 
-	@Override
-	protected boolean registerInternal(String name, String data, boolean duplicate) {
-		throw new RuntimeException("Stub!");
-	}
+    @Override
+    protected boolean registerInternal(String name, String data, boolean duplicate) {
+        throw new RuntimeException("Stub!");
+    }
 
-	@Override
-	protected String getInternal(String name) {
-		throw new RuntimeException("Stub!");
-	}
+    @Override
+    protected String getInternal(String name) {
+        throw new RuntimeException("Stub!");
+    }
 
-	@Override
-	protected boolean deleteInternal(String name) {
-		return true;
-	}
+    @Override
+    protected boolean deleteInternal(String name) {
+        return true;
+    }
 
-	@Override
-	public Set<String> getNames() {
-		return getNamesCached();
-	}
+    @Override
+    public Set<String> getNames() {
+        return getNamesCached();
+    }
 
-	@Override
-	public boolean register(String rawname, float[][] alldata, boolean replace) {
-		cachedNames.add(rawname);
-		cachedData.put(rawname, alldata);
-		return true;
-	}
+    @Override
+    public boolean register(String rawname, float[][] alldata, boolean replace) {
+        cachedNames.add(rawname);
+        cachedData.put(rawname, alldata);
+        return true;
+    }
 
-	@Override
-	public float[][] get(String name) {
-		return getCached(name);
-	}
+    @Override
+    public float[][] get(String name) {
+        return getCached(name);
+    }
 }
