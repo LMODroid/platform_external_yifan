@@ -1,0 +1,38 @@
+plugins {
+	id 'com.android.library'
+}
+
+android {
+	namespace 'com.libremobileos.yifan.util'
+	compileSdk 33
+
+	defaultConfig {
+		minSdk 26
+		targetSdk 33
+	}
+
+	buildTypes {
+		release {
+			minifyEnabled false
+		}
+	}
+	compileOptions {
+		sourceCompatibility JavaVersion.VERSION_11
+		targetCompatibility JavaVersion.VERSION_11
+	}
+
+	flavorDimensions "gpu"
+	productFlavors {
+		withGpu {
+			dependencies {
+				implementation('org.tensorflow:tensorflow-lite-gpu:2.11.0')
+			}
+		}
+		withoutGpu {}
+	}
+
+}
+
+dependencies {
+	implementation('org.tensorflow:tensorflow-lite:2.11.0')
+}

@@ -1,0 +1,10 @@
+java_library_static {
+    name: "YifanBaseShared",
+    sdk_version: "current",
+    srcs: ["main/java/**/*.java", "withoutGpu/java/**/*.java"],
+    manifest: "main/AndroidManifest.xml",
+
+    static_libs: [
+        "tensorflowlite_java",
+    ],
+}

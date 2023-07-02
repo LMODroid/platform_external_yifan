@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * File imported without required modifications, only fixing IDE warnings.
+ * File imported without requiring modifications, only fixing IDE warnings.
  * Source: https://github.com/googlesamples/mlkit/blob/d10c447f8259b59262582c30c1608cdf38f4e4a0/android/vision-quickstart/app/src/main/java/com/google/mlkit/vision/demo/BitmapUtils.java
  */
 

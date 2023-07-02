@@ -42,16 +42,12 @@ android {
 
 	flavorDimensions "gpu"
 	productFlavors {
-		withGpu {
-			dependencies {
-				implementation('org.tensorflow:tensorflow-lite-gpu:2.11.0')
-			}
-		}
+		withGpu {}
 		withoutGpu {}
 	}
-
 }
 
 dependencies {
 	implementation('org.tensorflow:tensorflow-lite:2.11.0')
+	implementation(project(':BaseShared'))
 }

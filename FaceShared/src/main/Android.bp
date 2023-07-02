@@ -1,11 +1,12 @@
 java_library_static {
     name: "YifanFaceShared",
     sdk_version: "current",
-    srcs: ["main/java/**/*.java", "withoutGpu/java/**/*.java"],
-    manifest: "main/AndroidManifest.xml",
+    srcs: ["java/**/*.java"],
+    // Note: required does not get applied when building as static lib!
     required: ["yifan-detect-class1.tflite", "yifan-mobile_face_net.tflite"],
 
     static_libs: [
+        "YifanBaseShared",
         "tensorflowlite_java",
     ],
 }
@@ -13,7 +14,7 @@ java_library_static {
 prebuilt_etc {
     name: "yifan-detect-class1.tflite",
     filename: "detect-class1.tflite",
-    src: "main/assets/detect-class1.tflite",
+    src: "assets/detect-class1.tflite",
     sub_dir: "face",
     required: ["yifan-detect-class1.txt"],
 }
@@ -21,14 +22,14 @@ prebuilt_etc {
 prebuilt_etc {
     name: "yifan-detect-class1.txt",
     filename: "detect-class1.txt",
-    src: "main/assets/detect-class1.txt",
+    src: "assets/detect-class1.txt",
     sub_dir: "face",
 }
 
 prebuilt_etc {
     name: "yifan-mobile_face_net.tflite",
     filename: "mobile_face_net.tflite",
-    src: "main/assets/mobile_face_net.tflite",
+    src: "assets/mobile_face_net.tflite",
     sub_dir: "face",
     required: ["yifan-mobile_face_net.txt"],
 }
@@ -36,6 +37,6 @@ prebuilt_etc {
 prebuilt_etc {
     name: "yifan-mobile_face_net.txt",
     filename: "mobile_face_net.txt",
-    src: "main/assets/mobile_face_net.txt",
+    src: "assets/mobile_face_net.txt",
     sub_dir: "face",
 }

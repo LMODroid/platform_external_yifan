@@ -13,5 +13,6 @@ dependencyResolutionManagement {
 	}
 }
 rootProject.name = "Yifan"
+include ':BaseShared'
 include ':FaceShared'
 include ':FaceExample'
